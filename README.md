@@ -1,7 +1,6 @@
-# Before start need to download [Server.zip](https://github.com/roychanho/AngularBusWeb/files/6732549/Server.zip)
- 
-![image](https://user-images.githubusercontent.com/64776908/123778718-fa283380-d903-11eb-850a-fa803549d495.png)
+# Before start need to download [ATWD.zip](https://github.com/roychanho/AngularBusWeb/files/6732553/ATWD.zip) 
 
+![image](https://user-images.githubusercontent.com/64776908/123778718-fa283380-d903-11eb-850a-fa803549d495.png)
 
 # Rbus
 

@@ -1,0 +1,228 @@
+<div class="form">
+  <h2 class="txt">Create Bus Form</h2>
+  <form [formGroup]="createbusform" (ngSubmit)="onSubmit(createbusform.value)">
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['routeNumber'].valid &&
+        createbusform.controls['routeNumber'].touched
+      "
+    >
+      <label for="routeNumber" class="form-label">Bus Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="routeNumber"
+        formControlName="routeNumber"
+      />
+      <div
+        *ngIf="!createbusform.controls['routeNumber'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Bus input is invalid
+      </div>
+
+      <div
+        *ngIf="createbusform.controls['routeNumber'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Bus is required
+      </div>
+    </div>
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['startPointCN'].valid &&
+        createbusform.controls['startPointCN'].touched
+      "
+    >
+      <label for="startPointCN" class="form-label">Start Point(CN)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="startPointCN"
+        formControlName="startPointCN"
+      />
+      <div
+        *ngIf="!createbusform.controls['startPointCN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Start Point(CN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['startPointCN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Start Point(CN) is required
+      </div>
+    </div>
+
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['startPointEN'].valid &&
+        createbusform.controls['startPointEN'].touched
+      "
+    >
+      <label for="startPointEN" class="form-label">Start Point(EN)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="startPointEN"
+        formControlName="startPointEN"
+      />
+      <div
+        *ngIf="!createbusform.controls['startPointEN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Start Point(EN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['startPointEN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Start Point(EN) is required
+      </div>
+    </div>
+
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['endPointCN'].valid &&
+        createbusform.controls['endPointCN'].touched
+      "
+    >
+      <label for="endPointCN" class="form-label">End Point(CN)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="endPointCN"
+        formControlName="endPointCN"
+      />
+      <div
+        *ngIf="!createbusform.controls['endPointCN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        End Point(CN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['endPointCN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        End Point(CN) is required
+      </div>
+    </div>
+
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['endPointEN'].valid &&
+        createbusform.controls['endPointEN'].touched
+      "
+    >
+      <label for="endPointEN" class="form-label">End Point(EN)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="endPointEN"
+        formControlName="endPointEN"
+      />
+
+      <div
+        *ngIf="!createbusform.controls['endPointEN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        End Point(EN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['endPointEN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        End Point(EN) is required
+      </div>
+    </div>
+
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['stopCN'].valid &&
+        createbusform.controls['stopCN'].touched
+      "
+    >
+      <label for="stopCN" class="form-label">Stop Point(CN)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="stopCN"
+        formControlName="stopCN"
+      />
+      <div
+        *ngIf="!createbusform.controls['stopCN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Stop Point(CN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['stopCN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Stop Point(CN) is required
+      </div>
+    </div>
+
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !createbusform.controls['stopEN'].valid &&
+        createbusform.controls['stopEN'].touched
+      "
+    >
+      <label for="stopEN" class="form-label">Stop Point(EN)</label>
+      <input
+        type="text"
+        id="stopEN"
+        class="form-control"
+        formControlName="stopEN"
+      />
+      <div
+        *ngIf="!createbusform.controls['stopEN'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Stop Point(EN) input is invalid
+      </div>
+      <div
+        *ngIf="createbusform.controls['stopEN'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Stop Point(EN) is required
+      </div>
+    </div>
+    <div *ngIf="!createbusform.valid" class="form-control is-invalid">
+      Form is invalid!
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Create</button>
+  </form>
+
+  <div class="row row-cols-sm-1 row-cols-md-1">
+    <table class="table">
+      <thead>
+        <tr *ngIf="serverDataArr">
+          <th scope="col">Bus</th>
+          <th scope="col">startPointCN</th>
+          <th scope="col">startPointEN</th>
+          <th scope="col">endPointCN</th>
+          <th scope="col">endPointEN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of serverDataArr">
+          <td scope="row">{{ bus.routeNumber }}</td>
+          <td scope="row">{{ bus.startPointCN }}</td>
+          <td scope="row">{{ bus.startPointEN }}</td>
+          <td scope="row">{{ bus.endPointCN }}</td>
+          <td scope="row">{{ bus.endPointEN }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

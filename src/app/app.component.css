@@ -1,0 +1,58 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+.nav-btn {
+  display: block;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-item button {
+  position: relative;
+  transform: translateY(0px);
+  transition: 0.3s;
+}
+.navbar-nav .nav-item button:hover {
+  transform: translateY(-10px);
+}
+.navbar-nav .nav-item button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: -5px;
+  height: 0;
+  border-bottom: 1px solid #000;
+  transition: 0.3s;
+}
+.navbar-nav .nav-item button:hover::after {
+  left: 0;
+  right: 0;
+}
+
+.navbar .logo {
+  width: 100px;
+  /* object-fit: cover */
+}
+.navbar .logo .fas {
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+.carousel-caption {
+  color: #000;
+}
+
+.conpyright {
+  width: 100%;
+  text-align: center;
+  margin-top: 43%;
+  padding: 10px 0px;
+  background-color: #000;
+  color: #ccc;
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+}

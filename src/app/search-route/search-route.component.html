@@ -1,0 +1,78 @@
+<div class="form">
+  <h2 class="txt">Search Bus Route</h2>
+  <form [formGroup]="searchbusform" (ngSubmit)="onSubmit(searchbusform.value)">
+    <div
+      class="mb-3 field"
+      [class.error]="
+        searchbusform.controls['searchKey'].invalid &&
+        searchbusform.controls['searchKey'].touched
+      "
+    >
+      <!-- if user inputed data (touched), but cant pass will show error -->
+      <label for="searchKey" class="form-label">{{ searchType }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="searchKey"
+        formControlName="searchKey"
+      />
+
+      <!-- normal check -->
+      <div
+        class="forminvalid form-control is-invalid"
+        *ngIf="searchbusform.controls['searchKey'].invalid"
+      >
+        {{ searchType }} input is invalid
+      </div>
+      <!-- required check -->
+      <div
+        class="forminvalid form-control is-invalid"
+        *ngIf="searchbusform.controls['searchKey'].hasError('required')"
+      >
+        {{ searchType }} must be entered!
+      </div>
+    </div>
+    <!-- check the form all required -->
+    <div class="form-control is-invalid" *ngIf="!searchbusform.valid">
+      Form is invalid!
+    </div>
+
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+  </form>
+
+  <div class="row row-cols-sm-1 row-cols-md-1">
+    <table class="table">
+      <thead>
+        <tr *ngIf="serverDataArr">
+          <th scope="col">ID</th>
+          <th scope="col">Bus</th>
+          <th scope="col">fare</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th scope="col">Delete</th>
+          <th scope="col">ErrorNumber</th>
+          <th scope="col">ErrorDetail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of serverDataArr">
+          <td scope="row">{{ bus.route }}</td>
+          <td scope="row">{{ bus.routeNumber }}</td>
+          <td scope="row">{{ bus.fare }}</td>
+          <td scope="row">{{ bus.startPoint }}</td>
+          <td scope="row">{{ bus.endPoint }}</td>
+          <td scope="row">
+            <button
+              class="btn-delete btn btn-outline-dark"
+              (click)="deleteButtonHandler(bus.route)"
+            >
+              Show Delete
+            </button>
+          </td>
+          <td scope="row">{{ bus.ErrorNumber }}</td>
+          <td scope="row">{{ bus.ErrorDetail }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="form">
+  <h2 class="txt">Search Bus Stop</h2>
+  <form
+    [formGroup]="searchstopform"
+    (ngSubmit)="onSubmit(searchstopform.value)"
+  >
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !searchstopform.controls['searchKey'].valid &&
+        searchstopform.controls['searchKey'].touched
+      "
+    >
+      <label for="searchKey" class="form-label">{{ searchType }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="searchKey"
+        formControlName="searchKey"
+      />
+
+      <div
+        class="forminvalid form-control is-invalid"
+        *ngIf="!searchstopform.controls['searchKey'].valid"
+      >
+        {{ searchType }} input is invalid
+      </div>
+
+      <div
+        class="forminvalid form-control is-invalid"
+        *ngIf="searchstopform.controls['searchKey'].hasError('required')"
+      >
+        {{ searchType }} is required
+      </div>
+    </div>
+    <div class="form-control is-invalid" *ngIf="!searchstopform.valid">
+      Form is invalid!
+    </div>
+
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+  </form>
+
+  <div class="row row-cols-sm-1 row-cols-md-1">
+    <table class="table">
+      <thead>
+        <tr *ngIf="serverDataArr">
+          <th scope="col">ID</th>
+          <th scope="col">Seq go</th>
+          <th scope="col">Seq back</th>
+          <th scope="col">stoppoint</th>
+          <th scope="col">Delete</th>
+          <th scope="col">ErrorNumber</th>
+          <th scope="col">ErrorDetail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stop of serverDataArr">
+          <td scope="row">{{ stop.route }}</td>
+          <td scope="row">{{ stop.go }}</td>
+          <td scope="row">{{ stop.back }}</td>
+          <td scope="row">{{ stop.stoppoint }}</td>
+          <td scope="row">
+            <button
+              class="btn-delete btn btn-outline-dark"
+              (click)="deleteButtonHandler2(stop.route)"
+            >
+              Show Delete
+            </button>
+          </td>
+          <td scope="row">{{ stop.ErrorNumber }}</td>
+          <td scope="row">{{ stop.ErrorDetail }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="form">
+  <h2 class="txt">Delete Bus form</h2>
+  <form [formGroup]="deletebusform" (ngSubmit)="onSubmit(deletebusform.value)">
+    <div
+      class="mb-3 field"
+      [class.error]="
+        !deletebusform.controls['route'].valid &&
+        deletebusform.controls['route'].touched
+      "
+    >
+      <label class="form-label" for="route">Route</label>
+      <input
+        type="text"
+        id="route"
+        placeholder=""
+        class="form-control"
+        formControlName="route"
+      />
+      <div
+        *ngIf="!deletebusform.controls['route'].valid"
+        class="forminvalid form-control is-invalid"
+      >
+        Route input is invalid
+      </div>
+      <div
+        *ngIf="deletebusform.controls['route'].hasError('required')"
+        class="forminvalid form-control is-invalid"
+      >
+        Route is required
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-dark">Delete</button>
+    <button (click)="cancelButtonHandler()" class="btn btn-outline-dark">
+      Cancel
+    </button>
+  </form>
+
+  <div class="row row-cols-sm-1 row-cols-md-1">
+    <table class="table">
+      <thead>
+        <tr *ngIf="serverDataArr">
+          <th scope="col">RouteID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of serverDataArr">
+          <td scope="row">{{ bus.Success }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
